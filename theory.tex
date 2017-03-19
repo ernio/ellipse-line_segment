@@ -1,0 +1,103 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\numberwithin{equation}{section}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\graphicspath{ {img/} }
+\DeclareGraphicsExtensions{.png}
+
+\title{Intersection between ellipse and line segment}
+\author{Kristian Wichmann}
+
+\begin{document}
+\maketitle
+
+\section{Equation for the ellipse}
+Let the semimajor and semininor axis of the ellipse be given by $a$ and $b$. Assuming these to lie along the $x$ and $y$ axis of the coordinate system, the standard equation is:
+\begin{equation}
+\label{ellipse_equation}
+\left(\frac{x}{a}\right)^2+\left(\frac{y}{b}\right)^2=1
+\end{equation}
+
+\section{Equation for the line segment}
+Let the line segment run bewteen $P(p_1,p_2)$ and $Q(q_1,q_2)$. A directional vector for the segment is:
+\begin{equation}
+\label{line_equation}
+\vec{PQ}=
+\begin{pmatrix}
+q_1-p_1 \\
+q_2-p_2
+\end{pmatrix}
+\end{equation}
+Hence, a parametric equation for the line segment is:
+\begin{equation}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+p_1 \\
+p_2
+\end{pmatrix}
++t
+\begin{pmatrix}
+q_1-p_1 \\
+q_2-p_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+p_1 + t(q_1-p_1) \\
+p_2 + t(q_2-p_2)
+\end{pmatrix}
+,\quad t\in[0,1]
+\end{equation}
+
+\section{Solving the equations}
+We now search for values of $t$ which solve both \ref{ellipse_equation} and \ref{line_equation}. According to \ref{line_equation} we must have:
+\begin{equation}
+p_1 + t(q_1-p_1)
+\end{equation}
+The square is:
+\begin{equation}
+x^2=p_1^2+t^2(q_1-p_1)^2+2p_1t(q_1-p_1)
+\end{equation}
+Ordering by powers of $t$ this is:
+\begin{equation}
+\label{x_squared}
+x^2=(q_1-p_1)^2t^2+2p_1(q_1-p_1)t+p_1^2
+\end{equation}
+By analogy, for $y$ we get:
+\begin{equation}
+\label{y_squared}
+y^2=(q_2-p_2)^2t^2+2p_2(q_2-p_2)t+p_2^2
+\end{equation}
+Now insert \ref{x_squared} and \ref{y_squared} into \ref{ellipse_equation}:
+\begin{equation}
+\frac{(q_1-p_1)^2}{a^2}t^2+\frac{2p_1(q_1-p_1)}{a^2}t+\frac{p_1^2}{a^2}+\frac{(q_2-p_2)^2}{b^2}t^2+\frac{2p_2(q_2-p_2)}{b^2}t+\frac{p_2^2}{b^2}=1
+\end{equation}
+Collect terms according to power of $t$:
+\begin{align}
+\underbrace{\left(\frac{(q_1-p_1)^2}{a^2}+\frac{(q_2-p_2)^2}{b^2}\right)}_{c_2}t^2 &\\
++\underbrace{\left(\frac{2p_1(q_1-p_1)}{a^2}+\frac{2p_2(q_2-p_2)}{b^2}\right)}_{c_1}t &\\
++\underbrace{\left(\frac{p_1^2}{a^2}+\frac{p_2^2}{b^2}-1\right)}_{c_0} & = 0
+\end{align}
+This is a quadratic equation in $t$. The corresponding discriminant is:
+\begin{equation}
+d=c_1^2-4c_0c_2
+\end{equation}
+If $d<0$ there's no solution. If $d>0$, there's two:
+\begin{equation}
+t=\frac{-c_1\pm\sqrt{d}}{2c_2}
+\end{equation}
+If $d$ is exactly zero, there's one solution $t=-\frac{c_1}{2c_2}$.
+
+\section{Checking the solutions}
+Remember that the line segment only stretches from $t=0$ to $t=1$. So it must be checked that the solutions (if any) do indeed lie in the interval $[0,1]$. Otherwise, there is no intersection (though an extension of the line segment does intersect the ellipse).
+
+\end{document}
