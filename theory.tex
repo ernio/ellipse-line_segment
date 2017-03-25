@@ -100,4 +100,22 @@ If $d$ is exactly zero, there's one solution $t=-\frac{c_1}{2c_2}$.
 \section{Checking the solutions}
 Remember that the line segment only stretches from $t=0$ to $t=1$. So it must be checked that the solutions (if any) do indeed lie in the interval $[0,1]$. Otherwise, there is no intersection (though an extension of the line segment does intersect the ellipse).
 
+\section{Special case: Circle}
+If $a=b=r$ we have a circle with radius $r$. This means that equation \ref{ellipse_equation} becomes:
+\begin{equation}
+\label{circle_equation}
+x^2+y^2=r^2
+\end{equation}
+We now insert equations \ref{x_squared} and \ref{y_squared} into \ref{circle_equation}:
+\begin{equation}
+(q_1-p_1)^2t^2+2p_1(q_1-p_1)t+p_1^2+(q_2-p_2)^2t^2+2p_2(q_2-p_2)t+p_2^2=r^2
+\end{equation}
+Now collect terms into powers of $t$:
+\begin{align}
+\underbrace{\left((q_1-p_1)^2+(q_2-p_2)^2\right)}_{c_2}t^2 &\\
++\underbrace{2\left(p_1(q_1-p_1)+p_2(q_2-p_2)\right)}_{c_1}t &\\
++\underbrace{p_1^2+p_2^2-r^2}_{c_0} & = 0
+\end{align}
+Now proceed as above, finding the discriminant and checking if the solutions (if any) are between 0 and 1.
+
 \end{document}
